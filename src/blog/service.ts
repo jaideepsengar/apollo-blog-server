@@ -17,7 +17,11 @@ export default class BlogAPI extends RESTDataSource {
   }
 
   async createBlog(blog: any) {
-    const response = await this.post(`blogs`, blog);
+    const response = await this.post(`blogs`, {
+      title: blog.title,
+      description: blog.description,
+      createdBy: blog.createdBy
+    });
     return response;
   }
 }

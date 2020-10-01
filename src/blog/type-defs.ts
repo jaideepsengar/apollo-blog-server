@@ -7,6 +7,10 @@ export default gql`
     blogsByUser(id: ID!): [Blog]
   }
 
+  extend type Mutation {
+    createBlog(blog: BlogInput): CreateBlogMutationResponse
+  }
+
   type Blog {
     id: ID!
     title: String!
@@ -15,13 +19,16 @@ export default gql`
     posts: [Post]!
   }
 
-  type Mutation {
-    createBlog(post: BlogInput): Blog
-  }
-
-  input PostAndMediaInput {
+  input BlogInput {
     title: String
     description: String
-    createdBy: String
+    createdBy: ID!
+  }
+
+  type CreateBlogMutationResponse implements MutationResponse {
+    code: String!
+    success: Boolean!
+    message: String!
+    blog: Blog
   }
 `
