@@ -1,18 +1,18 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
 
-export default class UserAPI extends RESTDataSource {
+export default class PostAPI extends RESTDataSource {
   constructor() {
     super();
     this.baseURL = 'http://localhost:4000/';
   }
 
-  async getUsers() {
-    const response = await this.get('users');
+  async getPosts() {
+    const response = await this.get('posts');
     return Array.isArray(response) ? response : [];
   }
 
-  async getUserById(userId: string) {
-    const response = await this.get(`users/${userId}`);
+  async getPostById(id: string) {
+    const response = await this.get(`posts/${id}`);
     return response;
   }
 }

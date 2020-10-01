@@ -14,4 +14,14 @@ export default gql`
     user: User!
     posts: [Post]!
   }
+
+  type Mutation {
+    createBlog(post: BlogInput): Blog
+  }
+
+  input PostAndMediaInput {
+    title: String
+    description: String
+    createdBy: String
+  }
 `
