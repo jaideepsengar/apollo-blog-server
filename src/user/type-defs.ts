@@ -10,7 +10,7 @@ export default gql`
     id: ID!
     name: String!
     email: String!
-    posts: [Post]!
-    blogs: [Blog]!
+    posts: [Post]
+    blogs: [Blog]
   }
 `
