@@ -22,6 +22,7 @@ export default class BlogAPI extends RESTDataSource {
       description: blog.description,
       createdBy: blog.createdBy
     });
+
     return response;
   }
 }
