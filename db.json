@@ -48,6 +48,12 @@
       "title": "Post 1",
       "description": "This is post 1 description",
       "blog": 1
+    },
+    {
+      "id": 2,
+      "title": "Post 2",
+      "description": "This is post 2 description",
+      "blog": 1
     }
   ]
 }

@@ -4,6 +4,13 @@ export default {
     blog: (_parent: any, { id }: any, { dataSources }: any) => dataSources.blogAPI.getBlogById(id)
   },
 
+  Blog: {
+    async blogPosts(parent: any,  _args: any, { dataSources }: any) {
+      const posts = await dataSources.postAPI.getPosts()
+      return posts.filter((post: any) => post.blog === parent.id)
+    }
+  },
+
   Mutation: {
     createBlog: async (_parent: any, { blog }: any, { dataSources }: any) => {
       const result = await dataSources.blogAPI.createBlog(blog);
