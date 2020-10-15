@@ -3,3 +3,8 @@ generates:
   ./src/types.d.ts:
     plugins:
       - typescript
+  ./src/types-resolvers.d.ts:
+    plugins:
+      - typescript-resolvers
+config:
+  noSchemaStitching: true

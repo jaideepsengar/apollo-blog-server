@@ -1,3 +1,6 @@
+import { Blog } from './../../types.d';
+import { MutationCreateBlogArgs } from "../../types";
+
 export default {
   Query: {
     blogs: (_parent: any, _args: any, { dataSources }: any) => dataSources.blogAPI.getBlogs(),
@@ -5,14 +8,14 @@ export default {
   },
 
   Blog: {
-    async blogPosts(parent: any,  _args: any, { dataSources }: any) {
+    async blogPosts(parent: Blog,  _args: any, { dataSources }: any) {
       const posts = await dataSources.postAPI.getPosts()
       return posts.filter((post: any) => post.blog === parent.id)
     }
   },
 
   Mutation: {
-    createBlog: async (_parent: any, { blog }: any, { dataSources }: any) => {
+    createBlog: async (_parent: any, { blog }: MutationCreateBlogArgs, { dataSources }: any) => {
       const result = await dataSources.blogAPI.createBlog(blog);
       return {
         code: '200',
